@@ -15,3 +15,5 @@ const config ={
 }
 
 module.exports = {config}
+
+//esto es opara poder ver si mando aqui the head
