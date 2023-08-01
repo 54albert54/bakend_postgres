@@ -3,14 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <title>Api rest Home</title>
 </head>
 <body>
-  <h1>aqui quiero mostrar mis datos</h1>
+  <section class="main">
+  <p class="title_main">API rest</p>
+  <p class="text_main" >HI, Este es mi proyecto de una rest-api capas de almacenar informacion tantos como productos,<br> clientes y
+    ordenes de compras.
+  </p>
+  <p class="text_submain" > Creada con express.js de parte del bakend optimizando todas las bondades de JavaScript y para base de datos PostgresSQL con el ORM Sequelize para manejar la interfas de manera mas facil y fluida.</p>
 
-  <a href="/v1/products/"> productos</a> <br>
-  <a href="/v1/customers"> customers</a> <br>
+<div class="link_container">
 
-  <script  src="./dataBase.js"></script>
+  <div onmouseenter="showNotification(`Veras los datos JSON de los productos`)" onmouseout="showNotification('') " onclick="toChange(`/api/v1/products/`)" class="products_container">
+  <h2>Productos</h2>
+
+</div>
+
+<div onmouseenter="showNotification(`Veras los datos JSON de los clietes`)" onmouseout="showNotification('')" onclick="toChange(`/api/v1/customers/`)" class="products_container">
+  <h2>Clientes</h2>
+</div>
+
+</div>
+
+<div onmouseenter="showNotification(`ir ala página de la tienda`)" onmouseout="showNotification('')" onclick="toChange(`/api/v1/tienda/`)" class="products_container">
+  <h2>Tienda</h2>
+</div>
+
+<span id="notificacion"></span>
+</section>
+
+
+
+
+  <script  src="./main.js"></script>
 </body>
 </html>

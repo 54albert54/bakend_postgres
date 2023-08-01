@@ -8,6 +8,7 @@ const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors( ))
 app.use(express.json());
 
 const whitelist = ['http://localhost:8080', 'https://myapp.co'];
@@ -25,8 +26,10 @@ app.use(express.static(path.join(__dirname, 'pagina')));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname+"/pagina/index.html");
+});
 
-
+app.get('//api/v1/tienda', (req, res) => {
+  res.sendFile(__dirname+"/pagina/tienda.html");
 });
 
 app.get('/api', (req, res) => {
