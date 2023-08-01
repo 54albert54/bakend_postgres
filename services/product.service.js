@@ -63,6 +63,8 @@ class ProductsService {
 
 
     const products = await models.Products.findAll(options)
+
+    this.products = products
    return products;
   }
 

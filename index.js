@@ -6,7 +6,7 @@ const path = require('path');
 const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('./middlewares/error.handler');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3030;
 
 app.use(cors( ))
 app.use(express.json());

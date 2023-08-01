@@ -10,6 +10,7 @@ const service = new OrderService();
 router.get('/', async (req, res, next) => {
   try {
     const products = await service.find();
+    res.setHeader('Content-Type', 'application/json')
     res.json(products);
   } catch (error) {
     next(error);
@@ -22,6 +23,7 @@ router.get('/:id',
     try {
       const { id } = req.params;
       const Order = await service.findOne(id);
+      res.setHeader('Content-Type', 'application/json')
       res.json(Order);
     } catch (error) {
       next(error);
@@ -35,6 +37,7 @@ router.post('/',
     try {
       const body = req.body;
       const newOrder = await service.create(body);
+      res.setHeader('Content-Type', 'application/json')
       res.status(201).json(newOrder);
     } catch (error) {
       next(error);
@@ -47,6 +50,7 @@ router.post('/add-item',
     try {
       const body = req.body;
       const newItems = await service.addItem(body);
+      res.setHeader('Content-Type', 'application/json')
       res.status(201).json(newItems);
     } catch (error) {
       next(error);

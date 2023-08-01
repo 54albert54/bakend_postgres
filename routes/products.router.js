@@ -7,11 +7,15 @@ const { createProductSchema, updateProductSchema, getProductSchema ,queryProduct
 const router = express.Router();
 const service = new ProductsService();
 
+console.log('items',service.products);
+
+
 router.get('/',
   validatorHandler(queryProductSchema, 'params'),
  async (req, res, next) => {
   try {
     const products = await service.find(req.query);
+    res.setHeader('Content-Type', 'application/json')
     res.json(products);
   } catch (error) {
     next(error);
@@ -24,6 +28,7 @@ router.get('/:id',
     try {
       const { id } = req.params;
       const product = await service.findOne(id);
+      res.setHeader('Content-Type', 'application/json')
       res.json(product);
     } catch (error) {
       next(error);
@@ -37,6 +42,7 @@ router.post('/',
     try {
       const body = req.body;
       const newProduct = await service.create(body);
+      res.setHeader('Content-Type', 'application/json')
       res.status(201).json(newProduct);
     } catch (error) {
       next(error);
@@ -55,6 +61,7 @@ router.patch('/:id',
       console.log("este es el id que mando",id)
 
       const product = await service.update(id, body);
+      res.setHeader('Content-Type', 'application/json')
       res.json(product);
     } catch (error) {
       next(error);
@@ -68,6 +75,7 @@ router.delete('/:id',
     try {
       const { id } = req.params;
       await service.delete(id);
+      res.setHeader('Content-Type', 'application/json')
       res.status(201).json({id});
     } catch (error) {
       next(error);
