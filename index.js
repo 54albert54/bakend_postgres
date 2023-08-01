@@ -31,8 +31,8 @@ app.get('/', (req, res) => {
 
 app.get('/api', (req, res) => {
   res.send(`hola esta es la pagina de inicio <br>
-  <a href="http://localhost:3000/api/v1/products/"> productos</a> <br>
-  <a href="http://localhost:3000/api/v1/customers"> customers</a> <br> `);
+  <a href="/v1/products/"> productos</a> <br>
+  <a href="/v1/customers"> customers</a> <br> `);
 });
 
 app.get('/nueva-ruta', (req, res) => {
