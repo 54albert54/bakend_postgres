@@ -15,19 +15,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.1",
-    "nodemon": "^2.0.12",
-    "prettier": "^2.3.2"
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.0"
   },
   "dependencies": {
-    "@faker-js/faker": "^7.6.0",
-    "@hapi/boom": "^9.1.4",
+    "@faker-js/faker": "^8.0.2",
+    "@hapi/boom": "^10.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "joi": "^17.4.2",
+    "joi": "^17.9.2",
     "mysql": "github:mysqljs/mysql",
     "mysql2": "^3.5.2",
     "node": "^20.5.0",
@@ -37,7 +37,7 @@
     "sequelize-cli": "^6.6.1"
   },
   "engines": {
-    "node": "20.x"
+    "node": "18.x"
   },
   "description": ""
 }
