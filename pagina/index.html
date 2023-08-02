@@ -8,8 +8,15 @@
 </head>
 <body>
   <section class="main">
+    <figure class="icons_main">
+      <img width="64" height="64" src="https://img.icons8.com/color/64/javascript--v1.png" alt="javascript--v1"/>
+      <img width="64" height="64" src="https://img.icons8.com/fluency/64/node-js.png" alt="node-js"/>
+
+      <img width="64" height="64" src="https://img.icons8.com/color/64/postgreesql.png" alt="postgreesql"/>
+
+    </figure>
   <p class="title_main">API rest</p>
-  <p class="text_main" >HI, Este es mi proyecto de una rest-api capas de almacenar informacion tantos como productos,<br> clientes y
+  <p class="text_main" >HI, Este es mi proyecto de una rest-api  <br>capaz de almacenar informacion tantos como: <br> productos,<br> clientes y <br>
     ordenes de compras.
   </p>
   <p class="text_submain" > Creada con express.js de parte del bakend optimizando todas las bondades de JavaScript y para base de datos PostgresSQL con el ORM Sequelize para manejar la interfas de manera mas facil y fluida.</p>
@@ -25,10 +32,12 @@
   <h2>Clientes</h2>
 </div>
 
+
+
+<div onmouseenter="showNotification(`Veras los datos JSON de una orden  compra`)" onmouseout="showNotification('')" onclick="toChange(`/api/v1/orders/1`)" class="products_container">
+  <h2>Or. Compra</h2>
 </div>
 
-<div onmouseenter="showNotification(`ir ala página de la tienda`)" onmouseout="showNotification('')" onclick="toChange(`/api/v1/tienda/`)" class="products_container">
-  <h2>Tienda</h2>
 </div>
 
 <span id="notificacion"></span>
