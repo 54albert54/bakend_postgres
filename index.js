@@ -3,6 +3,7 @@ const cors = require('cors');
 const routerApi = require('./routes');
 const path = require('path');
 const bodyParser = require("body-parser");
+const {checkApiKey} = require('./middlewares/auth.handler')
 
 const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('./middlewares/error.handler');
 
@@ -16,12 +17,14 @@ app.use(express.static(path.join(__dirname, 'pagina')));
 
 app.use(cors());
 
+require('./utils/auth')
 
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
-});
+
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   next();
+// });
 
 app.get('/', (req, res) => {
 
@@ -30,7 +33,7 @@ app.get('/', (req, res) => {
 
 
 
-app.get('/api', (req, res) => {
+app.get('/api',checkApiKey, (req, res) => {
   res.send(`hola esta es la pagina de inicio <br>
   <a href="/"> productos</a> <br>
   <a href="/"> customers</a> <br> `);

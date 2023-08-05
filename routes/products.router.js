@@ -1,13 +1,14 @@
 const express = require('express');
+const passport = require('passport')
 
 const ProductsService = require('./../services/product.service');
 const validatorHandler = require('./../middlewares/validator.handler');
 const { createProductSchema, updateProductSchema, getProductSchema ,queryProductSchema} = require('./../schemas/product.schema');
+const {checkRoles} = require('./../middlewares/auth.handler');
 
 const router = express.Router();
 const service = new ProductsService();
 
-console.log('items',service.products);
 
 
 router.get('/',
@@ -37,6 +38,8 @@ router.get('/:id',
 );
 
 router.post('/',
+passport.authenticate('jwt', {session:false}),
+checkRoles("admin"),
   validatorHandler(createProductSchema, 'body'),
   async (req, res, next) => {
     try {
@@ -51,6 +54,8 @@ router.post('/',
 );
 
 router.patch('/:id',
+passport.authenticate('jwt', {session:false}),
+checkRoles("admin"),
   validatorHandler(getProductSchema, 'params'),
   validatorHandler(updateProductSchema, 'body'),
    async (req, res, next) => {
@@ -58,8 +63,6 @@ router.patch('/:id',
     try {
       const { id } = req.params;
       const body = req.body;
-      console.log("este es el id que mando",id)
-
       const product = await service.update(id, body);
       res.setHeader('Content-Type', 'application/json')
       res.json(product);
@@ -70,6 +73,8 @@ router.patch('/:id',
 );
 
 router.delete('/:id',
+passport.authenticate('jwt', {session:false}),
+checkRoles("admin"),
   validatorHandler(getProductSchema, 'params'),
   async (req, res, next) => {
     try {

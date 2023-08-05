@@ -1,5 +1,5 @@
 const boom = require('@hapi/boom');
-
+const bcrypt = require('bcrypt');
 
 const { models } = require('../librerias/sequelize')
 class CustomersService {
@@ -8,15 +8,18 @@ class CustomersService {
   }
 
   async create(data) {
-    //const newUser = await models.User.create(data.user)
-    // const newCustomer = await models.Customers.create({
-    //   ...data,
-    // userId:newUser.id});
-
-
-    const newCustomer = await models.Customers.create(data,{
+    const hash = await bcrypt.hash(data.user.password,10)
+    const newData = {
+      ...data,
+      user:{
+      ...data.user,
+      password: hash
+      }
+    }
+    const newCustomer = await models.Customers.create(newData,{
       include:['user']
     });
+    delete newCustomer.dataValues.user.dataValues.password;
     return newCustomer;
   }
 
@@ -24,8 +27,15 @@ class CustomersService {
     const rta = await models.Customers.findAll({
       include:['user']
     })
-    // this.belongsTo(models.User, {as:'user'});
+    return rta;
+  }
+  async findOne2(userid) {
+    const rta = await models.Customers.findAll({
+      where:{
+        userId:userid
+      }
 
+    })
     return rta;
   }
 
@@ -46,6 +56,7 @@ class CustomersService {
 
   async delete(id) {
     const user =await this.findOne(id)
+    console.log("uusario a borrar",user)
 
     await user.destroy()
     return { id };

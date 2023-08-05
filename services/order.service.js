@@ -13,8 +13,22 @@ class OrderService {
   }
 
   async find() {
-    const Orders = await models.Order.findAll()
-    return Orders;
+    const orders = await models.Order.findAll()
+    return orders;
+  }
+
+  async findByUser(userId) {
+    const orders = await models.Order.findAll({
+      where:{
+        '$customer.user.id$':userId
+      },
+      include:[
+        {
+          association:'customer',include:['user']
+        }
+      ]
+    })
+    return orders;
   }
 
   async findOne(id) {
@@ -36,15 +50,14 @@ class OrderService {
   }
 
   async addItem(data){
-    // const product = await productService.findOne(data.productId);
-    // if (!product) {
-    //   throw boom.notFound('product not found add the new items bofore');
-    // }
     const addNewItem = await models.OrdersProducts.create(data)
     return addNewItem;
   }
 
   async delete(id) {
+    const order =await this.findOne(id)
+
+    await order.destroy()
     return { id };
   }
 

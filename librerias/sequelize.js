@@ -22,5 +22,3 @@ setupModels(sequelize);
 
 
 module.exports = sequelize
-
-
