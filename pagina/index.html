@@ -7,7 +7,7 @@
   <title>Api rest Home</title>
 </head>
 <body>
-  <section class="main">
+  <section class="main ">
     <figure class="icons_main">
       <img width="64" height="64" src="https://img.icons8.com/color/64/javascript--v1.png" alt="javascript--v1"/>
       <img width="64" height="64" src="https://img.icons8.com/fluency/64/node-js.png" alt="node-js"/>
@@ -15,35 +15,117 @@
       <img width="64" height="64" src="https://img.icons8.com/color/64/postgreesql.png" alt="postgreesql"/>
 
     </figure>
-  <p class="title_main">API rest</p>
-  <p class="text_main" >HI, Este es mi proyecto de una rest-api  <br>capaz de almacenar informacion tantos como: <br> productos,<br> clientes y <br>
-    ordenes de compras.
+  <p class="title_main">API rest 2.0</p>
+  <p class="text_main" >HI, Este es mi proyecto de una rest-api <br>Capaz de manipular infomaracion tantos como: </p>
+  <p class="text_submain" >  <br> Productos en su formato JSON<br> Ver una plantilla de como se organizan los datos.<br>
+    Poder agregarlo en un pequeño formulario .
   </p>
   <p class="text_submain" > Creada con express.js de parte del bakend optimizando todas las bondades de JavaScript y para base de datos PostgresSQL con el ORM Sequelize para manejar la interfas de manera mas facil y fluida.</p>
 
 <div class="link_container">
 
-  <div onmouseenter="showNotification(`Veras los datos JSON de los productos`)" onmouseout="showNotification('') " onclick="toChange(`/api/v1/products/`)" class="products_container">
-  <h2>Productos</h2>
+  <div onmouseenter="showNotification(`Ver un JSON con los productos`)" onmouseout="showNotification('') " onclick="toChange(`/api/v1/products/`)" class="products_container">
+  <h2>J. Productos</h2>
 
 </div>
 
-<div onmouseenter="showNotification(`Veras los datos JSON de los clietes`)" onmouseout="showNotification('')" onclick="toChange(`/api/v1/customers/`)" class="products_container">
-  <h2>Clientes</h2>
+
+
+
+
+<div onmouseenter="showNotification(`Ver los productos`)" onmouseout="showNotification('')"  onclick="showData()" class="products_container">
+  <h2>V. Productos</h2>
 </div>
 
-
-
-<div onmouseenter="showNotification(`Veras los datos JSON de una orden  compra`)" onmouseout="showNotification('')" onclick="toChange(`/api/v1/orders/1`)" class="products_container">
-  <h2>Or. Compra</h2>
-</div>
+<div onmouseenter="showNotification(`Agregar nuevos productos`)" onmouseout="showNotification('')"  onclick="changeP()" class="products_container"> <h2>A producto</h2></div>
 
 </div>
 
 <span id="notificacion"></span>
 </section>
 
+<div class="mostrar-producto invicible">
+  <div class="animation" >
+    <div class="box-of-star1">
+      <div class="star star-position1"></div>
+      <div class="star star-position2"></div>
+      <div class="star star-position3"></div>
+      <div class="star star-position4"></div>
+      <div class="star star-position5"></div>
+      <div class="star star-position6"></div>
+      <div class="star star-position7"></div>
+    </div>
+    <div class="box-of-star2">
+      <div class="star star-position1"></div>
+      <div class="star star-position2"></div>
+      <div class="star star-position3"></div>
+      <div class="star star-position4"></div>
+      <div class="star star-position5"></div>
+      <div class="star star-position6"></div>
+      <div class="star star-position7"></div>
+    </div>
+    <div class="box-of-star3">
+      <div class="star star-position1"></div>
+      <div class="star star-position2"></div>
+      <div class="star star-position3"></div>
+      <div class="star star-position4"></div>
+      <div class="star star-position5"></div>
+      <div class="star star-position6"></div>
+      <div class="star star-position7"></div>
+    </div>
+    <div class="box-of-star4">
+      <div class="star star-position1"></div>
+      <div class="star star-position2"></div>
+      <div class="star star-position3"></div>
+      <div class="star star-position4"></div>
+      <div class="star star-position5"></div>
+      <div class="star star-position6"></div>
+      <div class="star star-position7"></div>
+    </div>
+    <div data-js="astro" class="astronaut">
+      <div class="head"></div>
+      <div class="arm arm-left"></div>
+      <div class="arm arm-right"></div>
+      <div class="body">
+        <div class="panel"></div>
+      </div>
+      <div class="leg leg-left"></div>
+      <div class="leg leg-right"></div>
+      <div class="schoolbag"></div>
+    </div>
 
+
+  </div>
+  <div class="root" >
+
+  </div>
+  <div onclick="changeV()" class="boton_atras">Atras</div>
+</div>
+
+<div class="agregarProducto  invicible">
+  <form class="formulario"   >
+    <label for="name">Nombre: </label>
+    <input type="text" id="name" placeholder="Escribe el nombre del producto." required >
+    <label for="img">Imagen: </label>
+    <input type="text" id="img" placeholder="Direccion url de la imagen." required>
+    <label for="descripcion">Descripcion:</label>
+    <textarea name="descripcion" id="descripcion" cols="30" rows="10" placeholder="Breve descripcion del articulo." ></textarea>
+    <label for="price">Price: </label>
+    <input type="text" id="price" placeholder="Precio." required>
+    <select name="categoria" id="categoria">
+      <option value="6">Other</option>
+      <option value="1">tech</option>
+      <option value="2">cars</option>
+      <option value="5">Video Games</option>
+      <option value="7">travel</option>
+
+    </select>
+
+    <button onclick="sendData()"  type="reset" > enviar</button>
+
+  </form>
+  <div onclick="changeP()" class="boton_atras">Atras</div>
+</div>
 
 
   <script  src="./script.js"></script>
